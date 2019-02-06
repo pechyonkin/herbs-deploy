@@ -42,6 +42,39 @@ classes = [
     'kale',
     'bamboo shoot',
 ]
+
+class_to_english = {
+    '01': 'Chinese cabbage',
+    '02': 'spinach',
+    '03': 'choy sum',
+    '04': 'ér cài\xa0',
+    '05': 'leaf mustard',
+    '06': 'Chinese broccoli',
+    '07': 'Tricolor daisy',
+    '08': 'huáng xīn cài\xa0',
+    '09': 'fennel',
+    '10': 'jī máo cài\xa0',
+    '11': 'garlic chives',
+    '12': 'water spinach',
+    '13': 'kuài cài\xa0',
+    '14': 'endive',
+    '15': 'asparagus',
+    '16': 'celery',
+    '17': 'suàn huáng\xa0',
+    '18': 'garlic shoots',
+    '19': 'crown daisy',
+    '20': 'pea shoots',
+    '21': 'lettuce',
+    '22': 'cilantro',
+    '23': 'parsley',
+    '24': 'bok choy',
+    '25': 'watercress',
+    '26': 'lettuce',
+    '27': 'oilseed rape',
+    '28': 'kale',
+    '29': 'bamboo shoot',
+}
+
 path = Path(__file__).parent
 
 app = Starlette()
@@ -59,7 +92,6 @@ async def setup_learner():
     await download_file(export_file_url, path/export_file_name)
     try:
         learn = load_learner(path, export_file_name)
-        learn.data.classes = classes
         return learn
     except RuntimeError as e:
         if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
@@ -85,7 +117,7 @@ async def analyze(request):
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
-    return JSONResponse({'result': str(prediction)})
+    return JSONResponse({'result': class_to_english[str(prediction)]})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
