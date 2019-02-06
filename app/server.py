@@ -8,8 +8,8 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-export_file_url = 'https://www.dropbox.com/s/t7ue9z7qwsiuey9/herbs-new-s2.pkl?raw=1'
-export_file_name = 'herbs-new-s2.pkl'
+export_file_url = 'https://www.dropbox.com/s/gv3cvsmyd7uyk27/herbs-new-s3.pkl?raw=1'
+export_file_name = 'herbs-new-s3.pkl'
 
 classes = [
     'Chinese cabbage',
@@ -57,7 +57,7 @@ async def download_file(url, dest):
 
 async def setup_learner():
     await download_file(export_file_url, path/export_file_name)
-    defaults.device = torch.device('cpu')
+    # defaults.device = torch.device('cpu')
     try:
         learn = load_learner(path, export_file_name)
         return learn
