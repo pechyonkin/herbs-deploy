@@ -8,10 +8,40 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-export_file_url = 'https://www.dropbox.com/s/v6cuuvddq73d1e0/export.pkl?raw=1'
-export_file_name = 'export.pkl'
+export_file_url = 'https://www.dropbox.com/s/cfvg80sx2xijg3x/herbs-resnet50-stage1.pth?raw=1'
+export_file_name = 'herbs-resnet50-stage1.pth'
 
-classes = ['black', 'grizzly', 'teddys']
+classes = [
+    'Chinese cabbage',
+    'spinach',
+    'choy sum',
+    'ér cài ',
+    'leaf mustard',
+    'Chinese broccoli',
+    'Tricolor daisy',
+    'huáng xīn cài ',
+    'fennel',
+    'jī máo cài ',
+    'garlic chives',
+    'water spinach',
+    'kuài cài ',
+    'endive',
+    'asparagus',
+    'celery',
+    'suàn huáng ',
+    'garlic shoots',
+    'crown daisy',
+    'pea shoots',
+    'lettuce',
+    'cilantro',
+    'parsley',
+    'bok choy',
+    'watercress',
+    'lettuce',
+    'oilseed rape',
+    'kale',
+    'bamboo shoot',
+]
 path = Path(__file__).parent
 
 app = Starlette()
