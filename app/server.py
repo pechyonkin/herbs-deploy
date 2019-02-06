@@ -8,8 +8,8 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-export_file_url = 'https://www.dropbox.com/s/cfvg80sx2xijg3x/herbs-resnet50-stage1.pth?raw=1'
-export_file_name = 'herbs-resnet50-stage1.pth'
+export_file_url = 'https://www.dropbox.com/s/zrhi7hcr8a1did9/herbs-new-s2.pth?raw=1'
+export_file_name = 'herbs-new-s2.pth'
 
 classes = [
     'Chinese cabbage',
